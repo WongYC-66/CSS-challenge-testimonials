@@ -1,0 +1,185 @@
+ 1. link with CSS style, using emment from VScode 
+
+2. with F12 inspect tool in chrome, turn on toggle device toolbar to resize the Window to 500 pixel. Because we do mobile-design priorty first.  
+
+3. goto style-guide.md >> convert HSL color to HEX style. with google rgb to hex
+
+4. find your background color one by one...by div 5 section, and set backgroundd color
+
+5. then, make a big div as container to contain 5 divs. #testimonial-grid-container. set its css to padding 5%. why. mobile design photo. 5% is topn bottom, 3% is left right. check padding property documentation.
+
+6. set color to text of each div.  then margin of 5 divs. then define class class="grid-item" for 5 divs. for easy CSS style selector. margin : 20px. then padding 20px
+
+7. now mobile layout is good. Change to check Laptop mode. with chrome browser F12.
+
+8. now u determine how many breakpoints. eg. tablet/phone/laptop. but for now. we think 1 breakpoint only. like Bootstrap say small-medium is around 5xx-7xx pixel.
+
+9. in CSS, do @media (min-width :576px). means once we hit 576pixel, needs to resemble desktop-design.jpg
+- layout for desktop.
+idea 1: one container for 4 div at left, one container for 1 div at right. 
+ -then further divide left container into up and down container.
+ display : flex
+ flex-direction : row
+ -ok proceed.
+10. <div id="main-left"> 
+    <div id="top">
+    <div id="bottom">
+
+
+11. in css. add #testimonial-grid-container{
+        display: flex;
+    
+    from browser, seems like div5 taking half, we dont need that much, add this :
+    #testimonial-5{
+        flex-basis: 25%;
+    }
+12. check again layout , add:
+    #main-left{
+        display: flex;
+        flex-direction: column;
+    }
+
+    #top{
+        display: flex;
+    }
+
+    #bottom{
+        display: flex;
+    }
+
+13. copy div1-4 into @media here, to edit their flex-basis one by one.
+from desktop-design.jpg , seems like ratio is 75:25
+
+14. then set max-width to 750px in #testimonial-grid-container{
+    or adjust all.
+    flex-basis left right to 70 30
+    flex-basi top bottom to 65 35
+   or anything looks good like photo.
+
+15. #main-left .grid-item{
+        margin-right: 15px;
+    }
+
+
+16. housekeeping CSS by re-order. and combine display flex into one single CSS rule.
+ also for flex-basis or 25%/75% or 35%/65% together. like this
+
+    #testimonial-grid-container, #main-left,#top
+    {
+        display: flex;
+    }
+
+    #testimonial-1,#testimonial-4{
+        flex-basis: 65%;
+    }
+
+    #testimonial-2, #testimonial-3{
+        flex-basis: 35%;
+    }
+
+    then place all these flex related below the display flex 
+
+17. settle on layout for desktop. now move back to mobile design. 
+puttting in back all info.
+ img tag x1
+ p tag x3
+ h4 tag x1
+        <img src="./images/image-daniel.jpg" alt="daniel profile">
+        <p>Daniel Clifford</p>
+        <p>Verified Graduate</p>
+        <h4>I received a job offer mid-course, and the subjects I learned were current, if not more so, 
+          in the company I joined. I honestly feel I got every penny’s worth.</h4>
+        
+         <p>“ I was an EMT for many years before I joined the bootcamp. I’ve been looking to make a 
+          transition and have heard some people who had an amazing experience here. I signed up 
+          for the free intro course and found it incredibly fun! I enrolled shortly thereafter. 
+          The next 12 weeks was the best - and most grueling - time of my life. Since completing 
+          the course, I’ve successfully switched careers, working as a Software Engineer at a VR startup. ”</p> 
+
+18. after refill 5div info, found the css style 5 divs are same. can do one time. so, lets create common style and style together.
+  for photo , name and verified graduate. lets use flexbox  from .header, vscode generate a class of header for u. >>> <div class="header"></div>
+  also . <div class="header-txt"></div>
+19. at CSS, add .header{
+                    display: flex;
+                    align-items: center;
+                    }
+20. for round profile picture
+.header img{
+    border-radius: 50%;
+}
+
+21. add margin-bottom: 20px; to .header so that text is 20px below.
+margin-right: 10px; to .header img
+
+.grid-item h4{
+    margin-bottom: 20px;
+}
+
+border-radius: 5px; to .grid-item{}
+
+22. shadow. box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2) ;
+can use online shadow generator.
+
+23. font. from style guide, font size is 13px. at grid.item{}
+font-size: 1.2rem; for grid-item h4  =  120% of parent font size.
+
+24. font family . >>https://fonts.google.com/specimen/Barlow+Semi+Condensed
+ click both 500 and 600, and copy link to html .
+
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&display=swap" rel="stylesheet">
+
+
+25. for body {} add in from google also.
+body{
+    background-color: #ecf2f8;
+    font-family: font-family: 'Barlow Semi Condensed', sans-serif; ;
+}
+
+26. white cards have grey textcolor and combine:
+#testimonial-3, #testimonial-5 {
+    background-color: white ;
+    color : #48556a
+}
+from style guide, also got 50% opacity for verified graduate, and 70% opacity for paragrapth""
+
+27. but affected th name, we add class of name. press ALT and click all the p , then type  class = "name"
+and style in css.
+
+ .name{} wont work.
+
+.header .name{
+    opacity: 100%;
+}                   will working, because 2 selector take precedency than 1 selector.
+
+font-size: 1rem;  refer to 100% of 16 px
+
+28. font-weight: we can use 400 becoz we import it in link
+
+.grid-item h4{
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    font-weight: 600;   
+
+}
+
+29. purple card got double quote image. insert it. <img id="quote" src="./images/bg-pattern-quotation.svg" alt="quote">
+
+#quote{
+    position: absolute;
+    right : 20px;
+}
+
+relative to viewport, position this image, 20px from the right.
+but we want it relative to griditem. so set the position of grid-item1 to relative.
+
+30. make theimage behind text. set  z-index: 1 to image;
+below text, above purple card.
+set z-index 0 to #testimonial-1
+set z-index 3 to grid-item h4{}
+!!to use z-index, must add position relative;
+
+31.lastly post to github link to show as project.
+use source control of VSCode
+
