@@ -186,5 +186,9 @@ use source control of VSCode
 2. Then create new repository at github.com
 3. copy the .git link from github.
 4. add to remote / press setting at the sourcecontrol UI
-
+or use command terminal : git remote add origin https://github.com/WongYC-66/testimonial-grid-frontend-mentor-challenge-solution
+5. git push
+6. create branch from master with name "gh-pages" to host the static page at github
+7. view it at master-> environment -> view deployment
+! must have an index.html
 
