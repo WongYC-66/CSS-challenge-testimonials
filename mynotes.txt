@@ -182,4 +182,9 @@ set z-index 3 to grid-item h4{}
 
 31.lastly post to github link to show as project.
 use source control of VSCode
+1. Commit first. DONT PUBLISH YET
+2. Then create new repository at github.com
+3. copy the .git link from github.
+4. add to remote / press setting at the sourcecontrol UI
+
 
